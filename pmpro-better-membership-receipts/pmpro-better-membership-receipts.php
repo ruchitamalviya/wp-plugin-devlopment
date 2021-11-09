@@ -37,6 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PMPRO_BETTER_MEMBERSHIP_RECEIPTS_VERSION', '1.0.0' );
 
+define( 'PMPRO_BETTER_RECEIPT_PATH', plugin_dir_path( __FILE__ ) );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-pmpro-better-membership-receipts-activator.php

@@ -175,6 +175,14 @@ class Pmpro_Better_Membership_Receipts {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'pmpro_invoice_bullets_top', $plugin_public, 'add_new_li' );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'my_custom_content' );
+
+	
+
+		
+
+		
 
 	}
 

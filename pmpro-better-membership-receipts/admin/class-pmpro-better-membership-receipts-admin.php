@@ -110,7 +110,7 @@ class Pmpro_Better_Membership_Receipts_Admin {
 	public function ets_add_custom_reciept_menu(){
 		add_submenu_page('pmpro-dashboard',
 						'pmpro better membership receipt', 
-						' Membership Receipt', 
+						'Membership Receipt', 
 						'manage_options', 
 						'pmpro-recipt' , 
 						array($this, 'pmpro_recipt_add'), 
@@ -119,37 +119,20 @@ class Pmpro_Better_Membership_Receipts_Admin {
 	}
 
 	public function pmpro_recipt_add() {
-	include "partials/pmpro-better-membership-receipts-admin-display.php";
+		require_once PMPRO_BETTER_RECEIPT_PATH . 'admin/partials/pmpro-better-membership-receipts-admin-display.php';
+
 		//$this->save_content();
 	}
 
 	public function save_content() {
 		if( isset( $_POST['save_btn'] ) ) { 
 			if ( isset($_POST['ets_save_receipt_main_setting']) && wp_verify_nonce($_POST['ets_save_receipt_main_setting'], 'save_receipt_main_setting')) {
-			
-				/*if ( isset($_POST['receipt_logo']) && $_POST['receipt_logo'] ) {
-					$receipt_logo =  sanitize_text_field(trim($_POST['receipt_logo'] ) );
-				}
-				if ( isset($_POST['receipt_title']) && $_POST['receipt_title'] ) {
-					$receipt_title =  sanitize_text_field(trim($_POST['receipt_title'] ) );
-				}
-				if ( isset($_POST['receipt_footer']) && $_POST['receipt_footer'] ) {
-					$receipt_footer =  sanitize_text_field(trim($_POST['receipt_footer'] ) );
-				}
-				if ( isset($_POST['receipt_content']) && $_POST['receipt_content'] ) {
-					$receipt_content =  sanitize_text_field(trim($_POST['receipt_content'] ) );
-				}*/
-
 				$receipt_logo = isset($_POST['upload_receipt_logo']) && $_POST['upload_receipt_logo'] ? sanitize_text_field(trim($_POST['upload_receipt_logo'] ) ) : '';
-				//var_dump($receipt_logo);
-				//die;
-
 				$receipt_title = isset($_POST['receipt_title']) && $_POST['receipt_title'] ? sanitize_text_field(trim($_POST['receipt_title'] ) ) : '';
 
 				$receipt_footer = isset($_POST['receipt_footer']) && $_POST['receipt_footer'] ? sanitize_text_field(trim($_POST['receipt_footer'] ) ) : '';
 
 				$receipt_content = isset($_POST['receipt_content']) && $_POST['receipt_content'] ? sanitize_textarea_field(trim($_POST['receipt_content'] ) ) : '';
-
 				update_option('upload_receipt_logo' ,$receipt_logo);	
 				update_option('receipt_title',$receipt_title);
 				update_option('receipt_footer',$receipt_footer);

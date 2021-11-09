@@ -16,10 +16,9 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
  <?php 
-     $receipt_logo = sanitize_text_field( trim(get_option("upload_receipt_logo",true)));  
-     $receipt_title = sanitize_text_field( trim(get_option("receipt_title",true)));
-     $receipt_footer = sanitize_text_field( trim(get_option("receipt_footer",true)));
-     $receipt_content = sanitize_textarea_field( trim(get_option("receipt_content",true)));
+     $receipt_logo = sanitize_text_field( trim( get_option("upload_receipt_logo",true)));  
+     $receipt_title = sanitize_text_field( trim( get_option("receipt_title",true)));
+     $receipt_content = sanitize_textarea_field( trim( get_option("receipt_content",true)));
      
     
     ?>
@@ -38,9 +37,9 @@
                 <label for="receipt_title">Title</label><br>
                 <input type="text" id="receipt_title" name="receipt_title" value="<?php if(isset($receipt_title) && $receipt_title ) echo $receipt_title; ?>"><br><br>
                 <label for="receipt_footer">Footer</label><br>
-                <?php  wp_editor("", "receipt_footer");?>
-
-                <input type="text" id="receipt_footer" name="receipt_footer" value="<?php if(isset($receipt_footer) && $receipt_footer ) echo $receipt_footer ; ?>"><br><br>
+                <?php 
+                $footer_content= sanitize_text_field( trim( get_option("receipt_footer",true)));
+                 wp_editor("$footer_content",  "receipt_footer"); ?>
                 <label for="receipt_content">Content</label><br>
                 <textarea id="receipt_content" name="receipt_content" rows="4" cols="35"><?php if(isset($receipt_content) && $receipt_content ) echo $receipt_content; ?></textarea><br><br>
                 <input type="submit" name="save_btn" id="save_btn" value="Save">  

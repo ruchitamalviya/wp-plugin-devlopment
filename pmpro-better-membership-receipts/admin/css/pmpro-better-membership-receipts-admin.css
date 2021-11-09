@@ -1,22 +1,18 @@
 /**
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
- */
- 
-        .child_container
-        {
+ */   
+   .child_container{
             width: 100%;
             height: auto;
         }
-        .heading
-        {
+        .heading{
             margin-left: 25px;
             font-size: 20px;
             padding: 10px; 
             color: #4797ed;
         }
-        #register
-        {
+        #register{
             margin: 15px 40px 15px 40px ;
            
         }
