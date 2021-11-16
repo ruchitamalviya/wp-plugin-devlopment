@@ -1,25 +1,22 @@
-<?php
-//get_header();?>
 <div class="main_container">
-	<?php
-	$receipt_logo = sanitize_text_field( trim( get_option("upload_receipt_logo",true))); 
-	$receipt_title = sanitize_text_field( trim( get_option("receipt_title",true)));
-	$receipt_content = sanitize_textarea_field( trim( get_option("receipt_content",true)));
-	 $footer_content = sanitize_text_field( trim( get_option("receipt_footer",true)));
-	 if(isset($receipt_title) && $receipt_title && isset($receipt_content) && $receipt_content && isset($footer_content) && $footer_content){
-		 	?>
-		 	<header class="header"><div class="preview_logo"><img src="<?php echo $receipt_logo;?>"></div></header>
+<?php
+$receipt_logo = trim(get_option('upload_receipt_logo', true));
+$receipt_title = trim(get_option('receipt_title', true));
+$receipt_content = trim(get_option('receipt_content', true));
+$footer_content = trim(get_option('receipt_footer', true));
+ if (isset($receipt_title)&&$receipt_title &&isset($receipt_content) && $receipt_content &&isset($footer_content) && $footer_content) {
+    ?>
+	<header class="header"><div class="preview_logo"><img src="<?php echo $receipt_logo;?>"></div></header>
 		 	<h2 class="title_content"><?php echo $receipt_title;?></h2>
-		 	<div class="preview_content"><?php echo $receipt_content;?></div>
+		 	<div class="preview_content"><?php echo $receipt_content; ?></div>
 		 
 
 			<?php
 
 			global $wpdb, $pmpro_invoice, $pmpro_msg, $pmpro_msgt, $current_user;
-			if( $pmpro_msg ) {
-			
+			if ( $pmpro_msg ) {
 			?>
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_message ' . $pmpro_msgt, $pmpro_msgt ); ?>"><?php echo $pmpro_msg?></div>
+				<div class="<?php echo pmpro_get_element_class( 'pmpro_message ' . $pmpro_msgt, $pmpro_msgt ); ?>"><?php echo $pmpro_msg; ?></div>
 				<?php } ?>
 				<?php
 				if( $pmpro_invoice ) {  ?>

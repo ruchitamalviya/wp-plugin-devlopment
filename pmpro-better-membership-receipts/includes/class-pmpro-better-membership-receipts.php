@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -156,9 +155,9 @@ class Pmpro_Better_Membership_Receipts {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		//add submenu
+		// add submenu.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'ets_add_custom_reciept_menu' );
-		//add post action
+		// add post action.
 		$this->loader->add_action( 'admin_post_ets_save_receipt_settings', $plugin_admin, 'save_content' );
 	}
 
@@ -177,22 +176,14 @@ class Pmpro_Better_Membership_Receipts {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'pmpro_invoice_bullets_top', $plugin_public, 'add_new_li' );
 		$this->loader->add_action( 'wp_head', $plugin_public, 'my_custom_content' );
-
-	
-
-		
-
-		
-
-	}
-
+}
 	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
+	 * Run the loader to execute all of the hooks with WordPress
 	 * @since    1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
+	}
 	}
 
 	/**

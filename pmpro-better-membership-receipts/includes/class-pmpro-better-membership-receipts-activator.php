@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
@@ -21,7 +20,6 @@
  * @author     ExpressTech Softwares Solutions Pvt Ltd <contact@expresstechsoftwares.com>
  */
 class Pmpro_Better_Membership_Receipts_Activator {
-
 	/**
 	 * Short Description. (use period)
 	 *
@@ -29,8 +27,9 @@ class Pmpro_Better_Membership_Receipts_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
-
+	public static function activate() 
+    {
+        
 	}
 
 }

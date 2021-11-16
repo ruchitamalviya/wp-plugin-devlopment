@@ -44,8 +44,8 @@ class Pmpro_Better_Membership_Receipts_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string     $plugin_name       The name of this plugin.
+	 * @param      string     $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -107,25 +107,23 @@ class Pmpro_Better_Membership_Receipts_Admin {
 	 * @since    1.0.0
 	 * 
 	 */
-	public function ets_add_custom_reciept_menu(){
+	public function ets_add_custom_reciept_menu() {
 		add_submenu_page('pmpro-dashboard',
-						'pmpro better membership receipt', 
-						'Membership Receipt', 
-						'manage_options', 
-						'pmpro-recipt' , 
-						array($this, 'pmpro_recipt_add'), 
-	);
+						 'pmpro better membership receipt', 
+						 'Membership Receipt', 
+						 'manage_options',
+						 'pmpro-recipt' , 
+						 array ($this, 'pmpro_recipt_add' )
+			);
 
 	}
-
+// add reciept.
 	public function pmpro_recipt_add() {
-		require_once PMPRO_BETTER_RECEIPT_PATH . 'admin/partials/pmpro-better-membership-receipts-admin-display.php';
-
-		//$this->save_content();
+	require_once PMPRO_BETTER_RECEIPT_PATH . 'admin/partials/pmpro-better-membership-receipts-admin-display.php';		
 	}
-
-	public function save_content() {
-		if( isset( $_POST['save_btn'] ) ) { 
+// save content.
+	public function save_content()  {
+		if (isset($_POST['save_btn'] ) ) { 
 			if ( isset($_POST['ets_save_receipt_main_setting']) && wp_verify_nonce($_POST['ets_save_receipt_main_setting'], 'save_receipt_main_setting')) {
 				$receipt_logo = isset($_POST['upload_receipt_logo']) && $_POST['upload_receipt_logo'] ? sanitize_text_field(trim($_POST['upload_receipt_logo'] ) ) : '';
 				$receipt_title = isset($_POST['receipt_title']) && $_POST['receipt_title'] ? sanitize_text_field(trim($_POST['receipt_title'] ) ) : '';

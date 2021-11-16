@@ -44,8 +44,8 @@ class Pmpro_Better_Membership_Receipts_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string     $plugin_name       The name of the plugin.
+	 * @param      string     $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -97,28 +97,9 @@ class Pmpro_Better_Membership_Receipts_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pmpro-better-membership-receipts-public.js', array( 'jquery' ), $this->version, false );
-
 	}
-	/*public function add_new_li($pmpro_invoice)
-	{
-		
-		$receipt_title = sanitize_text_field( trim( get_option("receipt_title",true)));
-		if(isset($receipt_title) && $receipt_title)
-		{?>
-			<h2><?php echo $receipt_title; ?></h2>
-
-	<?php	}
-		?>
-
-		<li><strong><?php _e('New Account', 'paid-memberships-pro' );?>:</strong>Ruchita</li>
-		
-		<?php
-	}*/
-	public function my_custom_content() {
-		
+	// display custom contend on print page.
+	public function my_custom_content() {	
 		require_once PMPRO_BETTER_RECEIPT_PATH . 'template/print-media-frontend.php';
-		
-    	//echo '<p>This is inserted at the bottom</p>';
 	}
-
 }
