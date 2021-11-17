@@ -100,6 +100,6 @@ class Pmpro_Better_Membership_Receipts_Public {
 	}
 	// display custom contend on print page.
 	public function my_custom_content() {	
-		require_once PMPRO_BETTER_RECEIPT_PATH . 'template/print-media-frontend.php';
+		require_once PMPRO_BETTER_RECEIPT_PATH . 'templates/print-media-frontend.php';
 	}
 }

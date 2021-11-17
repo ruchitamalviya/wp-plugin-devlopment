@@ -74,9 +74,7 @@ class Pmpro_Better_Membership_Receipts_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pmpro-better-membership-receipts-admin.css', array(), $this->version, 'all' );
-
 	}
-
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
@@ -98,7 +96,6 @@ class Pmpro_Better_Membership_Receipts_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pmpro-better-membership-receipts-admin.js', array( 'jquery' ), $this->version, false );
 		 wp_enqueue_media();
-
 	}
 
 	/**
@@ -115,7 +112,6 @@ class Pmpro_Better_Membership_Receipts_Admin {
 						 'pmpro-recipt' , 
 						 array ($this, 'pmpro_recipt_add' )
 			);
-
 	}
 // add reciept.
 	public function pmpro_recipt_add() {
@@ -123,24 +119,29 @@ class Pmpro_Better_Membership_Receipts_Admin {
 	}
 // save content.
 	public function save_content()  {
-		if (isset($_POST['save_btn'] ) ) { 
-			if ( isset($_POST['ets_save_receipt_main_setting']) && wp_verify_nonce($_POST['ets_save_receipt_main_setting'], 'save_receipt_main_setting')) {
+		if (isset($_POST['save_btn'] ) ) :
+			if ( isset($_POST['ets_save_receipt_main_setting']) && wp_verify_nonce($_POST['ets_save_receipt_main_setting'], 'save_receipt_main_setting')) :
 				$receipt_logo = isset($_POST['upload_receipt_logo']) && $_POST['upload_receipt_logo'] ? sanitize_text_field(trim($_POST['upload_receipt_logo'] ) ) : '';
 				$receipt_title = isset($_POST['receipt_title']) && $_POST['receipt_title'] ? sanitize_text_field(trim($_POST['receipt_title'] ) ) : '';
-
-				$receipt_footer = isset($_POST['receipt_footer']) && $_POST['receipt_footer'] ? sanitize_text_field(trim($_POST['receipt_footer'] ) ) : '';
-
+				$company_name = isset($_POST['company_name']) && $_POST['company_name'] ? sanitize_text_field(trim($_POST['company_name'] ) ) : '';
+				$company_address = isset($_POST['company_address']) && $_POST['company_address'] ? sanitize_text_field(trim($_POST['company_address'] ) ) : '';
+				if ( isset($_POST['receipt_footer']) && $_POST['receipt_footer']) :
+					$receipt_footer = htmlentities( wpautop( $_POST['receipt_footer'] ) );
+					$receipt_footer = stripslashes( $receipt_footer );
+				endif;
 				$receipt_content = isset($_POST['receipt_content']) && $_POST['receipt_content'] ? sanitize_textarea_field(trim($_POST['receipt_content'] ) ) : '';
-				update_option('upload_receipt_logo' ,$receipt_logo);	
-				update_option('receipt_title',$receipt_title);
-				update_option('receipt_footer',$receipt_footer);
-				update_option('receipt_content',$receipt_content);
-				if ( isset( $_SERVER['HTTP_REFERER'] ) ){
+				update_option('upload_receipt_logo' , $receipt_logo);	
+				update_option('receipt_title', $receipt_title);
+				update_option('company_name', $company_name);
+				update_option('company_address', $company_address);
+				update_option('receipt_footer', $receipt_footer);
+				update_option('receipt_content', $receipt_content);
+				if ( isset( $_SERVER['HTTP_REFERER'] ) ) :
 					$message = 'Your setting saved sucesfully.';
 					$pre_location = $_SERVER['HTTP_REFERER'] . '&save_settings_msg=' . $message;
 						wp_safe_redirect( $pre_location );
-				}
-			}
-		}
+				endif;
+			endif;
+		endif;
 	}
 }
